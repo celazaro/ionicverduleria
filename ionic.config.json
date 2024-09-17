@@ -1,0 +1,7 @@
+{
+  "name": "pokemonapi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
