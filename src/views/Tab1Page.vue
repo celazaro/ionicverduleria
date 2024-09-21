@@ -68,28 +68,42 @@ import {cash} from 'ionicons/icons';
 import { ref, onMounted } from 'vue';
 
 interface IPosts {
-    id: number,
-    nombre: string,
-    imagen: string,
-    descripcion: string,
-    precio: number,
-    precio_tipo: string,
-    categoria_nombre: string
+    id: number;
+    nombre: string;
+    imagen: string;
+    descripcion: string;
+    precio: number;
+    precio_tipo: string;
+    categoria_nombre: string;
 }
 
 const error = ref('')
 const productos = ref<IPosts[]>([])
 
 
-const getData = async ():Promise<void> =>  {
+const getData:Ref <Array<IPosts>> = async ():Promise<void> =>  {
 
   const url = 'http://panambi.pythonanywhere.com/api/productos/'
-  const response = await fetch (url)
+
+/*   const response = await fetch (url)
 
   if (!response.ok) {
     throw new error('No se pudo obtener la información solicitada!!')
   }
-  productos.value = await response.json()
+  productos.value = await response.json() */
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+        const errorDetails = await response.text();
+        throw new Error(`Error ${response.status}: ${errorDetails}`);
+    }
+    productos.value = await response.json();
+  } catch (err) { // Cambia el nombre a err para evitar confusiones con el objeto global Error
+    console.error('Error fetching data:', err);
+    error.value = (err as Error).message; // Manejo correcto del tipo de error
+  }
+
 
 }
 
