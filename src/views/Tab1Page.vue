@@ -83,7 +83,7 @@ const productos = ref<IPosts[]>([])
 
 const getData = async ():Promise<void> =>  {
 
-  const url = 'http://panambi.pythonanywhere.com/api/productos/'
+  const url = 'https://panambi.pythonanywhere.com/api/productos/'
 
 /*   const response = await fetch (url)
 
