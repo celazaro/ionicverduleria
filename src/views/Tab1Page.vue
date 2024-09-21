@@ -63,9 +63,9 @@
 
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader,  IonCardTitle, IonGrid, IonCol, IonCardSubtitle, IonBadge, IonIcon, IonRow } from '@ionic/vue';
 
-import {cash} from 'ionicons/icons'
+import {cash} from 'ionicons/icons';
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 
 interface IPosts {
     id: number,
@@ -78,7 +78,7 @@ interface IPosts {
 }
 
 const error = ref('')
-const productos = ref<Array<IPosts>>([])
+const productos = ref<IPosts[]>([])
 
 
 const getData = async ():Promise<void> =>  {
