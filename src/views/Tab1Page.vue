@@ -81,7 +81,7 @@ const Error = ref('')
 const productos = ref<Array<IPosts>>([])
 
 
-const getData:Ref <Array<IPosts>> = async ():Promise<void> =>  {
+const getData = async ():Promise<void> =>  {
 
   const url = 'http://panambi.pythonanywhere.com/api/productos/'
   const response = await fetch (url)
