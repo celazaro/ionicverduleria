@@ -68,11 +68,12 @@ import {cash} from 'ionicons/icons'
 import { ref, onMounted, Ref } from 'vue'
 
 interface IPosts {
-    id$: number,
-    nombre$: string,
-    descripcion$: string,
-    precio$: number,
-    precio_tipo$: string,
+    id: number,
+    nombre: string,
+    imagen: string,
+    descripcion: string,
+    precio: number,
+    precio_tipo: string,
     categoria_nombre: string
 }
 
