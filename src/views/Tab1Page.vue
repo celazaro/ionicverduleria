@@ -65,13 +65,22 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardC
 
 import {cash} from 'ionicons/icons'
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
+
+interface IPosts {
+    id$: number,
+    nombre$: string,
+    descripcion$: string,
+    precio$: number,
+    precio_tipo$: string,
+    categoria_nombre: string
+}
 
 const Error = ref('')
-const productos = ref([])
+const productos = ref<Array<IPosts>>([])
 
 
-const getData = async () =>  {
+const getData:Ref <Array<IPosts>> = async ():Promise<void> =>  {
 
   const url = 'http://panambi.pythonanywhere.com/api/productos/'
   const response = await fetch (url)
