@@ -78,7 +78,7 @@ interface IPosts {
 }
 
 const Error = ref('')
-const productos = ref<Array<IPosts>>([])
+const productos = Ref<Array<IPosts>>([])
 
 
 const getData = async ():Promise<void> =>  {
