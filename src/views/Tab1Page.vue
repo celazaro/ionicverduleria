@@ -65,7 +65,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardC
 
 import {cash} from 'ionicons/icons'
 
-import { ref, onMounted, Ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 interface IPosts {
     id: number,
@@ -77,8 +77,8 @@ interface IPosts {
     categoria_nombre: string
 }
 
-const Error = ref('')
-const productos = Ref<Array<IPosts>>([])
+const error = ref('')
+const productos = ref<Array<IPosts>>([])
 
 
 const getData = async ():Promise<void> =>  {
@@ -87,7 +87,7 @@ const getData = async ():Promise<void> =>  {
   const response = await fetch (url)
 
   if (!response.ok) {
-    throw new Error('No se pudo obtener la información solicitada!!')
+    throw new error('No se pudo obtener la información solicitada!!')
   }
   productos.value = await response.json()
 
