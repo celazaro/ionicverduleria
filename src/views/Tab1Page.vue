@@ -10,22 +10,35 @@
         <ion-card color="success" class="card" v-for="p in productos" :key="p.id">
           <ion-card-content class="card-content">
             <ion-row>
-              <ion-col size="5" class="colimagen">
+              <ion-col size="2" class="colimagen">
                 <img :src = "p.imagen" class="imgproducto" />
               </ion-col>
-              <ion-col size="7" class="coldatos">
+              <ion-col size="10" class="coldatos, ion-padding">
                 <ion-card-subtitle>
-                  {{ p.categoria_nombre }}
+                  <ion-row>
+                    <ion-col size="auto">
+                      <ion-badge>
+                        {{ p.categoria_nombre }}
+                      </ion-badge>
+                    </ion-col>
+
+                    <ion-col  class="ion-text-end">
+                      <ion-button  size="small">
+                        <ion-icon :icon="cart"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+
+                  </ion-row>
+
                 </ion-card-subtitle>
+                
+
                 <ion-card-title>
                   {{ p.nombre }}
                 </ion-card-title>
-                <ion-badge>
-                  <ion-icon :icon="cash"></ion-icon>
-                  {{ p.precio_tipo }}
-                </ion-badge>
+                
                 <ion-card-subtitle>
-                  ${{ p.precio }}
+                  ${{ p.precio }}   -   Precio:{{ p.precio_tipo }}
                 </ion-card-subtitle>
                 <ion-card-subtitle>
                   {{ p.descripcion }}
@@ -61,9 +74,9 @@
 
 <script setup lang="ts">
 
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader,  IonCardTitle, IonGrid, IonCol, IonCardSubtitle, IonBadge, IonIcon, IonRow } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader,  IonCardTitle, IonGrid, IonCol, IonCardSubtitle, IonBadge, IonIcon, IonRow, IonButton } from '@ionic/vue';
 
-import {cash} from 'ionicons/icons';
+import {cart} from 'ionicons/icons';
 
 import { ref, onMounted } from 'vue';
 
@@ -125,21 +138,22 @@ onMounted (()=>{
 }
 .colimagen {
   justify-content: center;
+  align-self: center;;
 }
 
 .coldatos {
   justify-content: center;
   margin: auto;
-  padding-left: 20px;
-  min-width: 300px;
+  padding-left: 5px;
+  
 }
 
 .imgproducto {
   position: relative;
-  height: 200px;
+  height: 50px;
   
-  max-width: 200px;
-  border-radius: 20px;
+  max-width: 50px;
+  border-radius: 10px;
 }
 
 </style>
